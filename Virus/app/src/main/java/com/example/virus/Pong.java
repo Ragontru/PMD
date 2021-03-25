@@ -59,18 +59,16 @@ public class Pong extends GameView {
 
         synchronized(actores) {
             for (Sprite actor : actores) {
-
                 actor.pinta(canvas);
-
-
             }
         }
 
         paint.setTextSize(50);
         paint.setColor(Color.rgb(255,255,51));
-        canvas.drawText("Factor_mov: " + this.factor_mov + "  Células: " + actores.size(), 10, 50, paint);
+        canvas.drawText("  Células: " + actores.size(), 10, 50, paint);
     }
 
+    // Recoge eventos de cuando se pulsa la pantalla
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -79,14 +77,16 @@ public class Pong extends GameView {
 
                 pausado = false;
                 if (event.getX() < mScreenX / 2) {
-                    // virus.setEstadoVirus(virus.LEFT);
                     celula = new Celula(mScreenX, mScreenY);
                     synchronized(actores){
                         nuevos.add(celula);
                     }
 
                 } else {
-                    //virus.setEstadoVirus(virus.RIGHT);
+                    virus = new Virus(mScreenX, mScreenY);
+                    synchronized (actores){
+                        nuevos.add(virus);
+                    }
                 }
                 break;
             case MotionEvent.ACTION_UP:

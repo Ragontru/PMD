@@ -1,6 +1,7 @@
 package com.example.virus.sprites;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.RectF;
 
 import com.example.virus.GameView;
@@ -16,14 +17,14 @@ public class Virus extends  Sprite{
         ancho=mScreenX/100;
         alto=ancho;
 
+        // Rectangulo que delinea
         mRect=new RectF(mXCoord, mYCoord, mXCoord+ ancho, mYCoord+ alto);
 
-        velInicialX=mScreenY/100;
-        velInicialY=mScreenY/100;
+        velInicialX=mScreenY/50;
+        velInicialY=mScreenY/50;
         velActualX=velInicialX;
         velActualY=velInicialY;
     }
-
 
     public void invertirVelX(){
         velActualX=-velActualX;
@@ -33,17 +34,12 @@ public class Virus extends  Sprite{
         velActualY=-velActualY;
     }
 
-
+    // Acelera aleatoriamete la velocidad
     public void setRandomXVelocity(){
         Random random=new Random();
         int addVelocity=random.nextInt(2);
         this.velActualX+=addVelocity;
         if (addVelocity==0)invertirVelX();
-    }
-
-    public void icrementaVelocidad(){
-        velActualX*=1.1f;
-        velActualY*=1.1f;
     }
 
     @Override
@@ -66,6 +62,7 @@ public class Virus extends  Sprite{
         mRect.right=mRect.left+ancho;
         mRect.bottom=mRect.top+alto;
 
+        // Comprobacion de colisiones
         LinkedList<Sprite> objetos=pong.getActores();
         for(Sprite objeto:objetos){
             if (!objeto.equals(this)){
@@ -85,21 +82,26 @@ public class Virus extends  Sprite{
             }
         }
 
+        // Virus sale por la derecha
         if (colisionBordeRight()) {
             invertirVelX();
             recolocaX(mScreenX - ancho - 2);
 
         }
+
+        // Virus sale por izquierda
         if (colisionBordeLeft()) {
             invertirVelX();
             recolocaX(2);
         }
 
+        // Virus sale por arriba
         if (colisionBordeTop()) {
             invertirVelY();
             recolocaY(10);
         }
 
+        // Virus sale por abajo
         if (colisionBordeBottom()) {
             invertirVelY();
             recolocaY(mScreenY - 2);
@@ -108,7 +110,7 @@ public class Virus extends  Sprite{
     }
 
     public  void pinta(Canvas canvas){
-        paint.setColor(color);
+        paint.setColor(Color.rgb(51,204,0));
         float centroX=ancho/2+ mRect.left;
         float centroY=alto/2+mRect.top;
         canvas.drawCircle(centroX,centroY,ancho/2, paint);

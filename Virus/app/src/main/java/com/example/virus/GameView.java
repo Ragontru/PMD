@@ -34,7 +34,9 @@ public abstract class GameView extends SurfaceView implements Runnable {
     public float factor_mov;
 
     // Sprite = cosas que aparecen en pantalla (escenario y jugadores, tienen propiedades)
-    LinkedList<Sprite> actores=new LinkedList<>();
+    //LinkedList<Sprite> actores=new LinkedList<>();
+    LinkedList<Sprite> celulas=new LinkedList<>();
+    LinkedList<Sprite> viruses=new LinkedList<>();
     long ahora, tiempo_transcurrido;
 
 
@@ -87,9 +89,14 @@ public abstract class GameView extends SurfaceView implements Runnable {
     public abstract void dibuja(Canvas canvas);
 
     synchronized public void limpia(){
-        for (int i=0;i<actores.size();i++)
-            if(!actores.get(i).isVisible()) {
-                actores.remove(i);
+        for (int i=0;i<celulas.size();i++)
+            if(!celulas.get(i).isVisible()) {
+                celulas.remove(i);
+            }
+
+        for (int i=0;i<viruses.size();i++)
+            if(!viruses.get(i).isVisible()) {
+                viruses.remove(i);
             }
     }
 

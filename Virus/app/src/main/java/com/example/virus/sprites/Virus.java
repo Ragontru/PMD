@@ -63,13 +63,32 @@ public class Virus extends  Sprite{
         mRect.bottom=mRect.top+alto;
 
         // Comprobacion de colisiones
-        LinkedList<Sprite> objetos=pong.getActores();
+        LinkedList<Sprite> objetos=pong.getCelulas();
         for(Sprite objeto:objetos){
             if (!objeto.equals(this)){
                 if (objeto.isVisible()&&colision(objeto)){
-                    if (objeto instanceof Virus) {
-                        ((Virus) objeto).setRandomXVelocity();
-                        ((Virus) objeto).invertirVelY();
+                    if (objeto instanceof Celula) {
+                        ((Celula) objeto).setRandomXVelocity();
+                        ((Celula) objeto).invertirVelY();
+                        objeto.recolocaY(objeto.getRect().top - 2);
+                        setRandomXVelocity();
+                        invertirVelY();
+                    }else{
+                        setRandomXVelocity();
+                        invertirVelY();
+                        recolocaY(objeto.getRect().top - 2);
+                    }
+                }
+            }
+        }
+
+        LinkedList<Sprite> objetos2=pong.getViruses();
+        for(Sprite objeto:objetos2){
+            if (!objeto.equals(this)){
+                if (objeto.isVisible()&&colision(objeto)){
+                    if (objeto instanceof Celula) {
+                        ((Celula) objeto).setRandomXVelocity();
+                        ((Celula) objeto).invertirVelY();
                         objeto.recolocaY(objeto.getRect().top - 2);
                         setRandomXVelocity();
                         invertirVelY();

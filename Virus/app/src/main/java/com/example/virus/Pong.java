@@ -16,9 +16,20 @@ public class Pong extends GameView {
     Celula celula;
     Virus virus;
 
+    /*
     public LinkedList<Sprite> getActores() {
         return actores;
     }
+    */
+
+    public LinkedList<Sprite> getCelulas() {
+        return celulas;
+    }
+
+    public LinkedList<Sprite> getViruses() {
+        return viruses;
+    }
+
     public LinkedList<Sprite> nuevos=new LinkedList<>();
 
     public Pong (Context context, int x, int y) {
@@ -27,8 +38,8 @@ public class Pong extends GameView {
 
         virus = new Virus(mScreenX, mScreenY);
         celula = new Celula(mScreenX, mScreenY);
-        actores.add(virus);
-        actores.add(celula);
+        viruses.add(virus);
+        celulas.add(celula);
 
         setupGame();
 
@@ -41,12 +52,18 @@ public class Pong extends GameView {
 
     @Override
     public void actualiza() {
-
-        for (Sprite actor : actores) {
-            if(actor.isVisible())
-                actor.update(this, FPS);
+        for (Sprite virus : viruses) {
+            if(virus.isVisible())
+                virus.update(this, FPS);
         }
-        actores.addAll(nuevos);
+        viruses.addAll(nuevos);
+        nuevos=new LinkedList<>();
+
+        for (Sprite celula : celulas) {
+            if(celula.isVisible())
+                celula.update(this, FPS);
+        }
+        celulas.addAll(nuevos);
         nuevos=new LinkedList<>();
     }
 
@@ -57,15 +74,23 @@ public class Pong extends GameView {
         // Color fondo
         canvas.drawColor(Color.argb(255, 0, 0, 0));
 
-        synchronized(actores) {
-            for (Sprite actor : actores) {
-                actor.pinta(canvas);
+        synchronized(celulas) {
+            for (Sprite celula : celulas) {
+                celula.pinta(canvas);
             }
         }
 
+        synchronized(viruses) {
+            for (Sprite virus : viruses) {
+                virus.pinta(canvas);
+            }
+        }
+
+
         paint.setTextSize(50);
         paint.setColor(Color.rgb(255,255,51));
-        canvas.drawText("  Células: " + actores.size(), 10, 50, paint);
+        canvas.drawText("  Células: " + celulas.size(), 10, 50, paint);
+        canvas.drawText("  Virus: " + viruses.size(), 10, 150, paint);
     }
 
     // Recoge eventos de cuando se pulsa la pantalla
@@ -78,13 +103,13 @@ public class Pong extends GameView {
                 pausado = false;
                 if (event.getX() < mScreenX / 2) {
                     celula = new Celula(mScreenX, mScreenY);
-                    synchronized(actores){
+                    synchronized(celulas){
                         nuevos.add(celula);
                     }
 
                 } else {
-                    virus = new Virus(mScreenX, mScreenY);
-                    synchronized (actores){
+                    virus = new Virus(2300, mScreenY);
+                    synchronized (viruses){
                         nuevos.add(virus);
                     }
                 }

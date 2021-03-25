@@ -21,10 +21,6 @@ public class Pong extends GameView {
     }
     public LinkedList<Sprite> nuevos=new LinkedList<>();
 
-    public int puntuacion = 0;
-    public int vidas = 3;
-
-
     public Pong (Context context, int x, int y) {
 
         super(context,x,y);
@@ -41,12 +37,6 @@ public class Pong extends GameView {
     public void setupGame() {
         celula.reset();
         virus.reset();
-        if (vidas == 0) {
-            puntuacion = 0;
-            vidas = 3;
-
-        }
-
     }
 
     @Override
@@ -64,7 +54,8 @@ public class Pong extends GameView {
     @Override
     public void dibuja(Canvas canvas) {
 
-        canvas.drawColor(Color.argb(255, 20, 128, 188));
+        // Color fondo
+        canvas.drawColor(Color.argb(255, 0, 0, 0));
 
         synchronized(actores) {
             for (Sprite actor : actores) {
@@ -75,8 +66,9 @@ public class Pong extends GameView {
             }
         }
 
-        paint.setTextSize(30);
-        canvas.drawText("Factor_mov: " + this.factor_mov + "  Vidas: " + actores.size(), 10, 50, paint);
+        paint.setTextSize(50);
+        paint.setColor(Color.rgb(255,255,51));
+        canvas.drawText("Factor_mov: " + this.factor_mov + "  Células: " + actores.size(), 10, 50, paint);
     }
 
     @Override
@@ -93,11 +85,6 @@ public class Pong extends GameView {
                         nuevos.add(celula);
                     }
 
-                    puntuacion++;
-
-
-
-
                 } else {
                     //virus.setEstadoVirus(virus.RIGHT);
                 }
@@ -105,10 +92,8 @@ public class Pong extends GameView {
             case MotionEvent.ACTION_UP:
                 //virus.setEstadoVirus(virus.STOP);
                 break;
-
         }
         return true;
     }
-
 
 }

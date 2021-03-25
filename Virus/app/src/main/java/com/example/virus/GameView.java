@@ -78,8 +78,8 @@ public abstract class GameView extends SurfaceView implements Runnable {
             dibuja(canvas);
 
             paint.setTextSize(50);
-            canvas.drawText("tiempo transcurrido: " + this.tiempo_transcurrido, 50, 350, paint);
-            canvas.drawText("factor movimiento: " + this.factor_mov, 50, 450, paint);
+            // canvas.drawText("tiempo transcurrido: " + this.tiempo_transcurrido, 50, 350, paint);
+            // canvas.drawText("factor movimiento: " + this.factor_mov, 50, 450, paint);
             mSurfaceHolder.unlockCanvasAndPost(canvas);
         }
     }

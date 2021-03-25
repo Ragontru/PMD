@@ -102,10 +102,7 @@ public class Celula extends Sprite {
         if (colisionBordeBottom()) {
             invertirVelY();
             recolocaY(mScreenY - 2);
-            pong.vidas--;
-            if ( pong.vidas == 0) {
 
-            }
         }
     }
 

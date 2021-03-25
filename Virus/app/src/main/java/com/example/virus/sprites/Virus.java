@@ -103,10 +103,7 @@ public class Virus extends  Sprite{
         if (colisionBordeBottom()) {
             invertirVelY();
             recolocaY(mScreenY - 2);
-            pong.vidas--;
-            if ( pong.vidas == 0) {
 
-            }
         }
     }
 

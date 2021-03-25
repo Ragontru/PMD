@@ -16,12 +16,6 @@ public class Pong extends GameView {
     Celula celula;
     Virus virus;
 
-    /*
-    public LinkedList<Sprite> getActores() {
-        return actores;
-    }
-    */
-
     public LinkedList<Sprite> getCelulas() {
         return celulas;
     }
@@ -85,7 +79,6 @@ public class Pong extends GameView {
                 virus.pinta(canvas);
             }
         }
-
 
         paint.setTextSize(50);
         paint.setColor(Color.rgb(255,255,51));

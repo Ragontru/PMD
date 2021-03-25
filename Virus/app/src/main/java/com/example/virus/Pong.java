@@ -5,16 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 
-import com.example.virus.sprites.Bola;
-import com.example.virus.sprites.Pala;
+import com.example.virus.sprites.Celula;
+import com.example.virus.sprites.Virus;
 import com.example.virus.sprites.Sprite;
 
 import java.util.LinkedList;
 
 public class Pong extends GameView {
 
-    Bola bola;
-    Pala pala;
+    Celula celula;
+    Virus virus;
 
     public LinkedList<Sprite> getActores() {
         return actores;
@@ -29,18 +29,18 @@ public class Pong extends GameView {
 
         super(context,x,y);
 
-        pala = new Pala(mScreenX, mScreenY);
-        bola = new Bola(mScreenX, mScreenY);
-        actores.add(pala);
-        actores.add(bola);
+        virus = new Virus(mScreenX, mScreenY);
+        celula = new Celula(mScreenX, mScreenY);
+        actores.add(virus);
+        actores.add(celula);
 
         setupGame();
 
     }
 
     public void setupGame() {
-        bola.reset();
-        pala.reset();
+        celula.reset();
+        virus.reset();
         if (vidas == 0) {
             puntuacion = 0;
             vidas = 3;
@@ -87,10 +87,10 @@ public class Pong extends GameView {
 
                 pausado = false;
                 if (event.getX() < mScreenX / 2) {
-                    pala.setEstadoPala(pala.LEFT);
-                    bola = new Bola(mScreenX, mScreenY);
+                    // virus.setEstadoVirus(virus.LEFT);
+                    celula = new Celula(mScreenX, mScreenY);
                     synchronized(actores){
-                        nuevos.add(bola);
+                        nuevos.add(celula);
                     }
 
                     puntuacion++;
@@ -99,11 +99,11 @@ public class Pong extends GameView {
 
 
                 } else {
-                    pala.setEstadoPala(pala.RIGHT);
+                    //virus.setEstadoVirus(virus.RIGHT);
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                pala.setEstadoPala(pala.STOP);
+                //virus.setEstadoVirus(virus.STOP);
                 break;
 
         }

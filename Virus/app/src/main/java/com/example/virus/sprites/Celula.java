@@ -9,8 +9,8 @@ import com.example.virus.Pong;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Bola extends Sprite {
-    public Bola( int x, int y) {
+public class Celula extends Sprite {
+    public Celula(int x, int y) {
         super(x,y);
         ancho=mScreenX/100;
         alto=ancho;
@@ -69,9 +69,9 @@ public class Bola extends Sprite {
         for(Sprite objeto:objetos){
             if (!objeto.equals(this)){
                 if (objeto.isVisible()&&colision(objeto)){
-                    if (objeto instanceof Bola) {
-                        ((Bola) objeto).setRandomXVelocity();
-                        ((Bola) objeto).invertirVelY();
+                    if (objeto instanceof Celula) {
+                        ((Celula) objeto).setRandomXVelocity();
+                        ((Celula) objeto).invertirVelY();
                         objeto.recolocaY(objeto.getRect().top - 2);
                         setRandomXVelocity();
                         invertirVelY();

@@ -25,12 +25,12 @@ public class MainActivity extends Activity {
         //Obtener la pantalla
             // Dibuja en pantalla (borrar y dibujar = animar)
         Display display= getWindowManager().getDefaultDisplay();
-            // Estructura que contiene datos para darle un maño en la siguiente linea
+            // Estructura que contiene datos para darle un tamaño en la siguiente linea
         Point size=new Point();
         display.getSize(size);
         //gameView=new GameView(this,area.right-area.left,area.bottom-area.top);
 
-        // Se le pasa a Pong (juego paticular). Aqui va a estar todo el juego
+        // Se le pasa a Pong (juego particular). Aqui va a estar todo el juego
         pong=new Pong(this,size.x,size.y);
 
         // Muestra el juego en pantalla

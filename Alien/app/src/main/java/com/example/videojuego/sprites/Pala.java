@@ -13,15 +13,10 @@ public  class Pala extends Sprite {
     public final int RIGHT=2;
     public int estadoPala=STOP;
 
-
-
-
     public Pala(int x, int y){
 
         super(x,y);
 
-
-       
         //longitud y anchura de la pala
         ancho=mScreenX/8;
         alto=mScreenY/25;
@@ -36,28 +31,20 @@ public  class Pala extends Sprite {
 
     }
 
-
-
     public void setEstadoPala(int estadoPala) {
         this.estadoPala = estadoPala;
     }
 
-
     public void icrementaVelocidad(){
-
         velActualX*=1.2f;
-
     }
+
     public void reset() {
-
         velActualX=velInicialX;
-
-
     }
 
     @Override
     public void update(GameView game, float fps) {
-
         switch (estadoPala){
             case STOP: break;
             case LEFT:  mXCoord=mXCoord-velActualX;break;
@@ -73,14 +60,10 @@ public  class Pala extends Sprite {
         mRect.right=mXCoord+ ancho;
     }
 
-
-
     @Override
     public void pinta(Canvas canvas) {
-
         //dibujamos pala
         paint.setColor(Color.argb(255, 255, 255, 255));
         canvas.drawRect(getRect(), paint);
-
     }
 }

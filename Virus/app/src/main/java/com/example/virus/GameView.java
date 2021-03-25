@@ -10,14 +10,20 @@ import com.example.virus.sprites.Sprite;
 
 import java.util.LinkedList;
 
+// SurfaceView: Clase de grafico que refresca la pantalla mas rapido a View
+// Usa hilo para la ejecucion del juego
 public abstract class GameView extends SurfaceView implements Runnable {
 
     Thread hilo = null;
+    // Superficie general para dibujar en ella
     SurfaceHolder mSurfaceHolder;
 
+    // Variable que se debe conocer dentro y fuera del hilo (volatile)
+    // Visible desde dentro del hilo interno y ver variables fuera del hilo
     protected  volatile  boolean enEjecucion;
     public boolean pausado = true;
 
+    // PANTALLA Y SOFTWARE
     Canvas canvas;
     Paint paint;
     long FPS;
@@ -27,6 +33,7 @@ public abstract class GameView extends SurfaceView implements Runnable {
     private static int PERIODO_PROCESO=30;
     public float factor_mov;
 
+    // Sprite = cosas que aparecen en pantalla (escenario y jugadores, tienen propiedades)
     LinkedList<Sprite> actores=new LinkedList<>();
     long ahora, tiempo_transcurrido;
 
@@ -71,8 +78,6 @@ public abstract class GameView extends SurfaceView implements Runnable {
             dibuja(canvas);
 
             paint.setTextSize(50);
-            canvas.drawText("ahora: " + this.ahora, 50, 150, paint);
-            canvas.drawText("ultimo proceso: " + this.ultimoProceso, 50, 250, paint);
             canvas.drawText("tiempo transcurrido: " + this.tiempo_transcurrido, 50, 350, paint);
             canvas.drawText("factor movimiento: " + this.factor_mov, 50, 450, paint);
             mSurfaceHolder.unlockCanvasAndPost(canvas);

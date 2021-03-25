@@ -26,7 +26,7 @@ public abstract class GameView extends SurfaceView implements Runnable {
     // Visible desde dentro del hilo interno y ver variables fuera del hilo
     protected volatile boolean enEjecucion;
     //Variable para saber si el juego está pausado
-    public boolean pausado = true;
+    public boolean pausado = false;
 
     /*
         PANTALLA Y SOFTWARE
@@ -39,7 +39,6 @@ public abstract class GameView extends SurfaceView implements Runnable {
     long FPS;
     //Tamaño de la pantalla en píxeles
     int mScreenX, mScreenY;
-
 
     private long ultimoProceso=0;
     private static int PERIODO_PROCESO=30;

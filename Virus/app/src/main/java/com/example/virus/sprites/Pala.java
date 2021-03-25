@@ -1,10 +1,10 @@
-package com.example.videojuego.sprites;
+package com.example.virus.sprites;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.RectF;
 
-import com.example.videojuego.GameView;
+import com.example.virus.GameView;
 
 public  class Pala extends Sprite {
 
@@ -14,14 +14,12 @@ public  class Pala extends Sprite {
     public int estadoPala=STOP;
 
 
-
-
     public Pala(int x, int y){
 
         super(x,y);
 
 
-       
+
         //longitud y anchura de la pala
         ancho=mScreenX/8;
         alto=mScreenY/25;
@@ -84,3 +82,4 @@ public  class Pala extends Sprite {
 
     }
 }
+

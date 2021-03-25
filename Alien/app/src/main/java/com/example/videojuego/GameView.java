@@ -2,17 +2,10 @@ package com.example.videojuego;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
-import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.videojuego.sprites.Bola;
-import com.example.videojuego.sprites.Pala;
 import com.example.videojuego.sprites.Sprite;
 
 import java.util.LinkedList;

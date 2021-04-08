@@ -24,7 +24,8 @@ public class Pong extends GameView {
         return viruses;
     }
 
-    public LinkedList<Sprite> nuevos=new LinkedList<>();
+    public LinkedList<Sprite> nuevosC=new LinkedList<>();
+    public LinkedList<Sprite> nuevosV=new LinkedList<>();
 
     public Pong (Context context, int x, int y) {
 
@@ -50,15 +51,15 @@ public class Pong extends GameView {
             if(virus.isVisible())
                 virus.update(this, FPS);
         }
-        viruses.addAll(nuevos);
-        nuevos=new LinkedList<>();
+        viruses.addAll(nuevosV);
+        nuevosV=new LinkedList<>();
 
         for (Sprite celula : celulas) {
             if(celula.isVisible())
                 celula.update(this, FPS);
         }
-        celulas.addAll(nuevos);
-        nuevos=new LinkedList<>();
+        celulas.addAll(nuevosC);
+        nuevosC=new LinkedList<>();
     }
 
 
@@ -97,13 +98,13 @@ public class Pong extends GameView {
                 if (event.getX() < mScreenX / 2) {
                     celula = new Celula(mScreenX, mScreenY);
                     synchronized(celulas){
-                        nuevos.add(celula);
+                        nuevosC.add(celula);
                     }
 
                 } else {
                     virus = new Virus(2300, mScreenY);
                     synchronized (viruses){
-                        nuevos.add(virus);
+                        nuevosV.add(virus);
                     }
                 }
                 break;

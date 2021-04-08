@@ -132,6 +132,6 @@ public class Celula extends Sprite {
         paint.setColor(Color.rgb(204,0,51));
         float centroX=ancho/2+ mRect.left;
         float centroY=alto/2+mRect.top;
-        canvas.drawCircle(centroX,centroY,ancho/2, paint);
+        canvas.drawCircle(centroX,centroY,ancho, paint);
     }
 }

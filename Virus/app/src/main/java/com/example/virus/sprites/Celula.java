@@ -2,6 +2,7 @@ package com.example.virus.sprites;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.RectF;
 
 import com.example.virus.GameView;
@@ -130,6 +131,7 @@ public class Celula extends Sprite {
 
     public  void pinta(Canvas canvas){
         paint.setColor(Color.rgb(204,0,51));
+        paint.setStyle(Paint.Style.STROKE);
         float centroX=ancho/2+ mRect.left;
         float centroY=alto/2+mRect.top;
         canvas.drawCircle(centroX,centroY,ancho, paint);

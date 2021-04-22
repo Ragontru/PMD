@@ -15,7 +15,7 @@ public class Celula extends Sprite {
 
     public Celula(int x, int y) {
         super(x,y);
-        ancho=mScreenX/100;
+        ancho=mScreenX/50;
         alto=ancho;
 
         // Rectangulo que delinea
@@ -105,7 +105,7 @@ public class Celula extends Sprite {
         // Celula sale por la derecha
         if (colisionBordeRight()) {
             invertirVelX();
-            recolocaX(mScreenX - ancho - 2);
+            recolocaX(mScreenX - ancho - 20);
 
         }
 
@@ -118,7 +118,7 @@ public class Celula extends Sprite {
         // Celula sale por arriba
         if (colisionBordeTop()) {
             invertirVelY();
-            recolocaY(10);
+            recolocaY(50);
         }
 
         // Celula sale por abajo
@@ -130,7 +130,7 @@ public class Celula extends Sprite {
     }
 
     public  void pinta(Canvas canvas){
-        paint.setColor(Color.rgb(204,0,51));
+        paint.setColor(Color.rgb(255,26,26));
         paint.setStyle(Paint.Style.STROKE);
         float centroX=ancho/2+ mRect.left;
         float centroY=alto/2+mRect.top;

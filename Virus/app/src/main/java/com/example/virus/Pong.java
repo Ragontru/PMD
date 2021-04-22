@@ -19,7 +19,6 @@ public class Pong extends GameView {
     public LinkedList<Sprite> getCelulas() {
         return celulas;
     }
-
     public LinkedList<Sprite> getViruses() {
         return viruses;
     }

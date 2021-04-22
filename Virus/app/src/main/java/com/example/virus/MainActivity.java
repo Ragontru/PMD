@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
 
 // Hilo principal
 public class MainActivity extends Activity {
@@ -27,15 +28,18 @@ public class MainActivity extends Activity {
         setContentView(pong);
     }
 
-        @Override
-        protected void onResume() {
-            super.onResume();
-            pong.resume();
-        }
-
-        @Override
-        protected void onPause() {
-            super.onPause();
-            pong.pause();
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pong.resume();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pong.pause();
+    }
+
+    public void startGame(View view) {
+    }
+}

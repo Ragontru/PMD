@@ -130,8 +130,8 @@ public class Virus extends  Sprite{
 
     public  void pinta(Canvas canvas){
         paint.setColor(Color.rgb(51,204,0));
-        float centroX=ancho/2+ mRect.left;
-        float centroY=alto/2+mRect.top;
+        float centroX=ancho/2+ mRect.right;
+        float centroY=alto/2+mRect.bottom;
         canvas.drawCircle(centroX,centroY,ancho/2, paint);
     }
 }

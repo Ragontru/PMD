@@ -7,7 +7,7 @@ import android.graphics.RectF;
 
 import com.example.virus.GameView;
 
-public abstract class Sprite {
+public abstract class SpriteAnt {
 
     int mScreenX, mScreenY;
 
@@ -34,7 +34,7 @@ public abstract class Sprite {
     }
 
 
-    public Sprite(int screenX, int screenY){
+    public SpriteAnt(int screenX, int screenY){
 
         mScreenX=screenX;
         mScreenY=screenY;
@@ -43,7 +43,7 @@ public abstract class Sprite {
         paint=new Paint();
     }
 
-    public Sprite (int screenX, int screenY, int x, int y){
+    public SpriteAnt (int screenX, int screenY, int x, int y){
         mScreenX=screenX;
         mScreenY=screenY;
         color=Color.argb(255, 255, 255, 255);
@@ -55,11 +55,8 @@ public abstract class Sprite {
     }
 
     public boolean colision(Sprite s){
-
-        if ((this.ancho == s.ancho) && (this.getRect().intersect(s.getRect())))
-                return true;
-            else
-                return false;
+        if (this.getRect().intersect(s.getRect())) return true;
+        else return false;
     }
     public boolean colisionBordeLeft(){
         if (mRect.left<0)return true;

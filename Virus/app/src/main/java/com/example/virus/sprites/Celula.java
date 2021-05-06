@@ -21,6 +21,7 @@ public class Celula extends Sprite {
         // Rectangulo que delinea
         mRect=new RectF(mXCoord, mYCoord, mXCoord+ ancho, mYCoord+ alto);
 
+
         velInicialX=mScreenY/100;
         velInicialY=mScreenY/100;
         velActualX=velInicialX;

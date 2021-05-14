@@ -11,12 +11,14 @@ public abstract class Sprite {
 
     int mScreenX, mScreenY;
 
-    RectF mRect;
+    float centroX = mScreenX/2;
+    float centroY = mScreenY/2;
 
-    float mXCoord, mYCoord;
+    public int getmScreenY() {
+        return mScreenY;
+    }
 
-    float ancho;
-    float alto;
+    float radio ;
 
     float velInicialX;
     float velInicialY;
@@ -33,70 +35,39 @@ public abstract class Sprite {
         return visible;
     }
 
-
     public Sprite(int screenX, int screenY){
 
         mScreenX=screenX;
         mScreenY=screenY;
+        radio = 100;
         color=Color.argb(255, 255, 255, 255);
         visible=true;
         paint=new Paint();
     }
 
-    public Sprite (int screenX, int screenY, int x, int y){
-        mScreenX=screenX;
-        mScreenY=screenY;
-        color=Color.argb(255, 255, 255, 255);
-        paint=new Paint();
-    }
-
-    public RectF getRect(){
-        return mRect;
-    }
-
-    public boolean colision(Sprite s){
-
-        if ((this.ancho == s.ancho) && (this.getRect().intersect(s.getRect())))
-                return true;
-            else
-                return false;
-    }
     public boolean colisionBordeLeft(){
-        if (mRect.left<0)return true;
+        if (centroX-radio<0)return true;
         return false;
     }
     public boolean colisionBordeRight(){
-        if (mRect.right>mScreenX)return true;
+        if (centroX+radio>mScreenX)return true;
         return false;
     }
     public boolean colisionBordeTop(){
-        if (mRect.top < 0)return true;
+        if (centroY-radio< 0)return true;
         return false;
     }
     public boolean colisionBordeBottom(){
-        if (mRect.bottom > mScreenY)return true;
+        if (centroY+radio> mScreenY)return true;
         return false;
     }
     public void recolocaX(float x){
-        mRect.left=x;
-        mRect.right=x+ancho;
+        centroX - radio=x;
+        centroX + radio=x+radio;
     }
     public void recolocaY(float y){
-        mRect.bottom=y;
-        mRect.top=y-alto;
-    }
-    public void recolocaXY(float x,float y){
-        mRect.left=x;
-        mRect.right=x+ancho;
-        mRect.bottom=y;
-        mRect.top=y-alto;
-    }
-
-    public  void pinta(Canvas canvas){
-        if (isVisible()) {
-            paint.setColor(color);
-            canvas.drawRect(getRect(), paint);
-        }
+        centroY+radio=y;
+        centroY-radio=y-radio;
     }
 
     public abstract void reset();

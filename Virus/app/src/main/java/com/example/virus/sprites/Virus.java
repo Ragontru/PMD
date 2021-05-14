@@ -14,11 +14,9 @@ public class Virus extends  Sprite{
 
     public Virus(int x, int y) {
         super(x,y);
-        ancho=mScreenX/100;
-        alto=ancho;
-
-        // Rectangulo que delinea
-        mRect=new RectF(mXCoord, mYCoord, mXCoord+ ancho, mYCoord+ alto);
+        radio=mScreenX/100;
+        centroX=mScreenX/2;
+        centroY=mScreenY/2;
 
         velInicialX=mScreenY/50;
         velInicialY=mScreenY/50;
@@ -132,6 +130,6 @@ public class Virus extends  Sprite{
         paint.setColor(Color.rgb(51,204,0));
         float centroX=ancho/2+ mRect.right;
         float centroY=alto/2+mRect.bottom;
-        canvas.drawCircle(centroX,centroY,ancho/2, paint);
+        canvas.drawCircle(centroX,centroY,radio/2, paint);
     }
 }

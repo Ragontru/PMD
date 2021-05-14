@@ -15,12 +15,10 @@ public class Celula extends Sprite {
 
     public Celula(int x, int y) {
         super(x,y);
-        ancho=mScreenX/50;
-        alto=ancho;
 
-        // Rectangulo que delinea
-        mRect=new RectF(mXCoord, mYCoord, mXCoord+ ancho, mYCoord+ alto);
-
+        centroX=mScreenX/2;
+        centroY=mScreenY/2;
+        radio=100;
 
         velInicialX=mScreenY/100;
         velInicialY=mScreenY/100;
@@ -46,10 +44,6 @@ public class Celula extends Sprite {
 
     @Override
     public void reset() {
-        mRect.left=mScreenX/2;
-        mRect.right=mScreenX/2+ ancho;
-        mRect.top=mScreenY-20;
-        mRect.bottom=mScreenY-20+alto;
         this.velActualX=velInicialX;
         this.velActualY=velInicialY;
     }
@@ -58,11 +52,11 @@ public class Celula extends Sprite {
     public void update(GameView game, float fps) {
         Pong pong=(Pong)game;
 
-        mRect.left=mRect.left+velActualX*pong.factor_mov;
-        mRect.top=mRect.top+velActualY*pong.factor_mov;
+        centroX-radio=centroX-radio+velActualX*pong.factor_mov;
+        centroY-radio=centroY-radio+velActualY*pong.factor_mov;
 
-        mRect.right=mRect.left+ancho;
-        mRect.bottom=mRect.top+alto;
+        centroX+radio=centroX+radio+radio;
+        centroY+radio=centroY+radio+radio;
 
         // Comprobacion de colisiones
         LinkedList<Sprite> objetos=pong.getCelulas();
@@ -106,7 +100,7 @@ public class Celula extends Sprite {
         // Celula sale por la derecha
         if (colisionBordeRight()) {
             invertirVelX();
-            recolocaX(mScreenX - ancho - 20);
+            recolocaX(mScreenX - radio - 20);
 
         }
 
@@ -133,8 +127,6 @@ public class Celula extends Sprite {
     public  void pinta(Canvas canvas){
         paint.setColor(Color.rgb(255,26,26));
         paint.setStyle(Paint.Style.STROKE);
-        float centroX=ancho/2+ mRect.left;
-        float centroY=alto/2+mRect.top;
-        canvas.drawCircle(centroX,centroY,ancho, paint);
+        canvas.drawCircle(centroX,centroY,radio, paint);
     }
 }

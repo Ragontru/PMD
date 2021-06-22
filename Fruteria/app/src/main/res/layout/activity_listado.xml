@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListadoActivity">
+    tools:context="com.example.ui.ListadoActivity">
 
-    <TextView
-        android:id="@+id/idListado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LISTADO"
-        android:textSize="36sp"
+    <ListView
+        android:id="@+id/listViewFruta"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

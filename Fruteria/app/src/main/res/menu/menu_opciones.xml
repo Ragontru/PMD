@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/enlListFruta"
+        android:title="@string/listado_de_frutas" />
+    <item
+        android:id="@+id/enlAddFruta"
+        android:title="@string/a_adir_fruta" />
+    <item
+        android:id="@+id/enlEliFruta"
+        android:title="@string/eliminar_fruta" />
+</menu>
